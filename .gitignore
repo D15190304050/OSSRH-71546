@@ -1,0 +1,3 @@
+# Project exclude paths
+/dataworks/target/
+/dataworks-visualization-demo/target/
