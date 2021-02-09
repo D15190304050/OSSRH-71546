@@ -231,10 +231,20 @@ public class Properties
         int valueStartIndex;
         boolean hasSeparator;
         boolean precedingBackslash;
+        char[] lineBuffer;
 
-        while (reader.readLine(currentLineLength) != null)
+        while ((lineBuffer = reader.readLine(currentLineLength)) != null)
         {
+            keyLength = 0;
+            valueStartIndex = currentLineLength.getValue();
+            hasSeparator = false;
 
+//            System.out.println("line=<" + new String(lineBuffer, 0, currentLineLength.getValue()) + ">");
+            precedingBackslash = false;
+            while (keyLength < currentLineLength.getValue())
+            {
+
+            }
         }
     }
 

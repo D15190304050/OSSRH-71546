@@ -21,19 +21,6 @@ import java.util.LinkedList;
 
 /**
  * The {@link DbscanVisualization} class is a JavaFXApplication that provides a visual example for the DBSCAN algorithm.<br/><br/>
- * <b>Run configuration:</b><br/>
- * 1. Have JDK 11 and OpenJavaFX 11 installed and configured correctly. You can see "docs/在Windows下IDEA里使用JDK 11和
- * JavaFX 11写窗口程序.docx" to configure your environment.<br/>
- * 2. Add dataworks.jar to your project's library path.<br/>
- * 3. Create a new Java source file. This file represents the entry point for a JavaFX application. Write code for the
- * example. Note that you only need to modify a few lines of code. See "docs/JavaFXTemplate.txt" for reference.<br/>
- * 4. Configure your VM options. See "docs/在Windows下IDEA里使用JDK 11和JavaFX 11写窗口程序.docx" to configure those
- * options.<br/>
- * 5. Run the JavaFX application file.<br/><br/>
- * <b>Dependencies:</b><br/>
- * 1. JDK 11.<br/>
- * 2. OpenJavaFX 11.<br/>
- * 3. dataworks.jar<br/>
  * */
 public class DbscanVisualization extends Application
 {
