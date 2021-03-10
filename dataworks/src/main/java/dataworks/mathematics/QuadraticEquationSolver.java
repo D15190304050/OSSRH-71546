@@ -18,17 +18,17 @@ public class QuadraticEquationSolver
     /**
      * Coefficient of x^2.
      */
-    private double a;
+    private final double a;
 
     /**
      * Coefficient of x.
      */
-    private double b;
+    private final double b;
 
     /**
      * Constant c in the equation.
      */
-    private double c;
+    private final double c;
 
     /**
      * Result of the equation.

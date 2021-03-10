@@ -1,5 +1,6 @@
 package dataworks.fun;
 
+import dataworks.Binary;
 import dataworks.OutInt;
 
 import java.io.IOException;
@@ -114,7 +115,7 @@ public class Properties
      * @param outBuffer   A buffer that contains the intermediate and final result to return.
      * @return The parsed key or value.
      */
-    private static String convertEscape(char[] in, int startOffset, int length, StringBuilder outBuffer)
+    private static String parseEscape(char[] in, int startOffset, int length, StringBuilder outBuffer)
     {
         char c;
         int end = startOffset + length;
@@ -124,7 +125,6 @@ public class Properties
             c = in[left++];
             if (c == '\\')
                 break;
-            ;
         }
 
         // No escape (no backslash).
@@ -185,7 +185,7 @@ public class Properties
                 }
                 else
                 {
-                    // Convert escapes.
+                    // Convert escapes to corresponding characters.
                     switch (c)
                     {
                         case 't':
@@ -206,6 +206,75 @@ public class Properties
             }
             else
                 outBuffer.append(c);
+        }
+
+        return outBuffer.toString();
+    }
+
+    private static String saveEscape(String string, boolean escapeSpace, boolean escapeUnicode)
+    {
+        int bufferLength = string.length() * 2;
+
+        if (bufferLength < 0)
+            bufferLength = Integer.MAX_VALUE;
+
+        StringBuilder outBuffer = new StringBuilder(bufferLength);
+
+        for (int x = 0; x < string.length(); x++)
+        {
+            char c = string.charAt(x);
+
+            // Handle common case first, selecting largest block that avoids the specials below.
+            if ((c > '=') && (c < 127))
+            {
+                if (c == '\\')
+                {
+                    outBuffer.append('\\').append('\\');
+                    continue;
+                }
+                outBuffer.append(c);
+                continue;
+            }
+
+            switch (c)
+            {
+                // TODO: Figure out why leading space needs an escape.
+                case ' ':
+                    if ((x == 0) || escapeSpace)
+                        outBuffer.append('\\');
+                    outBuffer.append(' ');
+                    break;
+                case '\t':
+                    outBuffer.append('\\').append('t');
+                    break;
+                case '\n':
+                    outBuffer.append('\\').append('n');
+                    break;
+                case '\r':
+                    outBuffer.append('\\').append('r');
+                    break;
+                case '\f':
+                    outBuffer.append('\\').append('f');
+                    break;
+                case '=':
+                case ':':
+                case '#':
+                case '!':
+                    outBuffer.append('\\').append(c);
+                    break;
+                default:
+                    if (((c < 0x0020) || (c > 0x007e)) && escapeUnicode)
+                    {
+                        outBuffer.append('\\');
+                        outBuffer.append('u');
+                        outBuffer.append(Binary.toHexadecimalChar((c >> 12) & 0xF));
+                        outBuffer.append(Binary.toHexadecimalChar((c >> 8) & 0xF));
+                        outBuffer.append(Binary.toHexadecimalChar((c >> 4) & 0xF));
+                        outBuffer.append(Binary.toHexadecimalChar((c >> 0) & 0xF));
+                    }
+                    else
+                        outBuffer.append(c);
+            }
         }
 
         return outBuffer.toString();
