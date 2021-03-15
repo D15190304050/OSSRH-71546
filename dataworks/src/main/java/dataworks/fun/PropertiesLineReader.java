@@ -103,12 +103,8 @@ public class PropertiesLineReader
 
                     // If the current line length is greater than 0, then at least something is read.
                     if (precedingBackslash)
-                    {
                         currentLineLength.subtractOne();
-                        return inputBuffer;
-                    }
-                    else
-                        return inputBuffer;
+                    return inputBuffer;
                 }
 
                 // Reset the input buffer offset to read from the beginning of the buffer.

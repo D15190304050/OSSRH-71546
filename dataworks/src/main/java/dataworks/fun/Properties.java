@@ -3,10 +3,7 @@ package dataworks.fun;
 import dataworks.Binary;
 import dataworks.OutInt;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
+import java.io.*;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
@@ -280,6 +277,83 @@ public class Properties
         return outBuffer.toString();
     }
 
+    private static void writeComments(BufferedWriter writer, String comments) throws IOException
+    {
+        // TODO: Figure out if the following operation adds a redundant '#' if the given "comments" starts with '#'.
+        // Write a comment marker.
+        writer.write("#");
+
+        // Length of comments.
+        int commentsLength = comments.length();
+
+        // Index of the current/next character to process.
+        int currentIndex = 0;
+
+        // Index of last ASCII character.
+        int lastIndex = 0;
+
+        // An array that represent the escape of a unicode character.
+        char[] unicodeEscape = new char[6];
+        unicodeEscape[0] = '\\';
+        unicodeEscape[1] = 'u';
+
+        while (currentIndex < commentsLength)
+        {
+            char c = comments.charAt(currentIndex);
+            if ((c > '\u00ff') ||
+                (c == '\n') ||
+                (c == '\r'))
+            {
+                // If the program reaches here, then it reads a line splitter or a non-ASCII character.
+
+                // Write the ASCII substring.
+                if (lastIndex != currentIndex)
+                    writer.write(comments.substring(lastIndex, currentIndex));
+
+                // Convert escape if it is a non-ASCII character.
+                if (c > '\u00ff')
+                {
+                    unicodeEscape[2] = Binary.toHexadecimalChar((c >> 12) & 0xF);
+                    unicodeEscape[3] = Binary.toHexadecimalChar((c >>  8) & 0xF);
+                    unicodeEscape[4] = Binary.toHexadecimalChar((c >>  4) & 0xF);
+                    unicodeEscape[5] = Binary.toHexadecimalChar((c >>  0) & 0xF);
+
+                    writer.write(new String(unicodeEscape));
+                }
+                else
+                {
+                    // If the program reaches here, then it reads a line splitter.
+                    // So, we put a new line character in the output.
+                    writer.newLine();
+
+                    // Take care of CRLF ("\r\n").
+                    if ((c == '\r') &&
+                        (currentIndex != commentsLength - 1) &&
+                        (comments.charAt(currentIndex + 1) == '\n'))
+                        currentIndex++;
+
+                    // Write comment header at the beginning of a new line.
+                    if ((currentIndex == commentsLength - 1) ||
+                        (comments.charAt(currentIndex + 1) != '#') && (comments.charAt(currentIndex + 1) != '!'))
+                        writer.write("#");
+                }
+
+                // Update the start index of ASCII substring.
+                lastIndex = currentIndex + 1;
+            }
+
+            // Get the index of the next character to process.
+            currentIndex++;
+        }
+
+        // Write the end of the ASCII substring if there is one.
+        if (lastIndex != currentIndex)
+            writer.write(comments.substring(lastIndex, currentIndex));
+
+        // Put a new line splitter so that the following contents will start at a new line, and will not be processed as comments.
+        writer.newLine();
+    }
+
     public synchronized void load(Reader reader) throws IOException
     {
         Objects.requireNonNull(reader, "The argument \"reader\" can not be null.");
@@ -312,8 +386,50 @@ public class Properties
             precedingBackslash = false;
             while (keyLength < currentLineLength.getValue())
             {
+                char c = lineBuffer[keyLength];
 
+                // Check if escaped.
+                if ((c == '=') || (c == ':') && !precedingBackslash)
+                {
+                    valueStartIndex = keyLength + 1;
+                    hasSeparator = true;
+                    break;
+                }
+                else if (((c == ' ') || (c == '\t') || (c == '\f')) &&
+                    !precedingBackslash)
+                {
+                    valueStartIndex = keyLength + 1;
+                    break;
+                }
+
+                if (c == '\\')
+                    precedingBackslash = !precedingBackslash;
+                else
+                    precedingBackslash = false;
+
+                keyLength++;
             }
+
+            while (valueStartIndex < currentLineLength.getValue())
+            {
+                char c = lineBuffer[valueStartIndex];
+                if ((c != ' ') &&
+                    (c != '\t') &&
+                    (c != '\f'))
+                {
+                    if ((!hasSeparator) &&
+                        (c == '=' || c == ':'))
+                        hasSeparator = true;
+                    else
+                        break;
+                }
+
+                valueStartIndex++;
+            }
+
+            String key = parseEscape(lineBuffer, 0, keyLength, outputBuffer);
+            String value = parseEscape(lineBuffer, valueStartIndex, currentLineLength.getValue() - valueStartIndex, outputBuffer);
+            setProperty(key, value);
         }
     }
 
