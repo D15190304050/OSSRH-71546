@@ -158,7 +158,7 @@ public class List<T> implements IList<T>, Serializable
      *
      * @return an Iterator.
      */
-    @NotNull
+
     @Override
     public Iterator<T> iterator()
     {

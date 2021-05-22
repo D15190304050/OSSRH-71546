@@ -188,7 +188,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * {@link Entry}, otherwise, null.
      */
     @Nullable
-    private Entry find(@NotNull Node node, TKey key, int height)
+    private Entry find(Node node, TKey key, int height)
     {
         Entry[] children = node.children;
 
@@ -366,8 +366,8 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * @param node The node to split.
      * @return A new node, which is the sibling node of the given node.
      */
-    @NotNull
-    private Node split(@NotNull Node node)
+
+    private Node split(Node node)
     {
         // The new branch has the right half of "node".
         int half = node.childrenCount / 2;
@@ -384,7 +384,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      *
      * @return A {@link Queue} that contains all existing keys in the {@link BTree}.
      */
-    @NotNull
+
     private Queue<TKey> getAllKeys()
     {
         Queue<TKey> keys = new Queue<>();
@@ -432,7 +432,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      *
      * @return an {@link Iterable} containing all the values of the {@link BTree}.
      */
-    @NotNull
+
     private Queue<TValue> getAllValues()
     {
         Queue<TValue> values = new Queue<>();
@@ -497,7 +497,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * @throws IllegalArgumentException An element with the same key already exists in this {@link BTree}.
      */
     @Override
-    public void add(@NotNull KeyValuePair<TKey, TValue> keyValuePair)
+    public void add(KeyValuePair<TKey, TValue> keyValuePair)
     {
         add(keyValuePair.getKey(), keyValuePair.getValue());
     }
@@ -587,7 +587,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * @return {@code true} if the specified key-value pair is removed from the sub-tree rooted at "node", otherwise,
      * false. If it returns false, then it means the specified key-value pair does not exist in the {@link BTree}.
      */
-    public boolean remove(@NotNull Node node, TKey key, TValue value, boolean checkValue, int height)
+    public boolean remove(Node node, TKey key, TValue value, boolean checkValue, int height)
     {
         Entry[] children = node.children;
 
@@ -683,7 +683,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      */
     private void clear(Node node, int height)
     {
-        // The @NotNull annotation for parameter "Node node" is removed.
+        // The annotation for parameter "Node node" is removed.
         // Because when height equals -1, node is null, that is where recursive ends.
         if (height >= 0)
         {
@@ -709,7 +709,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * {@link BTree}.
      */
     @Override
-    public boolean remove(@NotNull KeyValuePair<TKey, TValue> keyValuePair)
+    public boolean remove(KeyValuePair<TKey, TValue> keyValuePair)
     {
         return remove(root, keyValuePair.getKey(), keyValuePair.getValue(), true, height);
     }
@@ -719,7 +719,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      *
      * @return an {@link Iterable} containing all key-value pairs of the {@link BTree}.
      */
-    @NotNull
+
     private Queue<KeyValuePair<TKey, TValue>> getKeyValuePairs()
     {
         Queue<KeyValuePair<TKey, TValue>> keyValuePairs = new Queue<>();
@@ -755,7 +755,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * @return an iterator over all key-value pairs of the {@link BTree}.
      */
     @Override
-    public @NotNull Iterator<KeyValuePair<TKey, TValue>> iterator()
+    public Iterator<KeyValuePair<TKey, TValue>> iterator()
     {
         return getKeyValuePairs().iterator();
     }
@@ -815,8 +815,8 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * @param indent Indent (spaces) of the node, it equals {@code (this.height - heightOfNode) * 4} spaces.
      * @return The string representation of the given {@link Node}.
      */
-    @NotNull
-    private String toString(@NotNull Node node, int height, String indent)
+
+    private String toString(Node node, int height, String indent)
     {
         StringBuilder nodeInfo = new StringBuilder();
         Entry[] children = node.children;

@@ -2,10 +2,9 @@ package dataworks.datetime;
 
 import dataworks.ArgumentOutOfRangeException;
 import dataworks.OverflowException;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * The {@link TimeSpan} class represents a duration of time. A {@link TimeSpan} can be negative or positive.
@@ -25,19 +24,19 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
     public static final long TICKS_PER_SECOND = TICKS_PER_MILLISECOND * 1000;
     public static final double SECONDS_PER_TICK = 1.0 / TICKS_PER_SECOND;
 
-    public static final long TICKS_PER_MINUTE = TICKS_PER_SECOND * 60;
+    public static final long TICKS_PER_MINUTE = TICKS_PER_SECOND * TimeUnitRelations.SECONDS_PER_MINUTE;
     private static final double MINUTES_PER_TICK = 1.0 / TICKS_PER_MINUTE;
 
-    public static final long TICKS_PER_HOUR = TICKS_PER_MINUTE * 60;
+    public static final long TICKS_PER_HOUR = TICKS_PER_MINUTE * TimeUnitRelations.MINUTES_PER_HOUR;
     private static final double HOURS_PER_TICK = 1.0 / TICKS_PER_HOUR;
 
-    public static final long TICKS_PER_DAY = TICKS_PER_HOUR * 24;
+    public static final long TICKS_PER_DAY = TICKS_PER_HOUR * TimeUnitRelations.HOURS_PER_DAY;
     private static final double DAYS_PER_TICK = 1.0 / TICKS_PER_DAY;
 
     private static final int MILLIS_PER_SECOND = 1000;
-    private static final int MILLIS_PER_MINUTE = MILLIS_PER_SECOND * 60;
-    private static final int MILLIS_PER_HOUR = MILLIS_PER_MINUTE * 60;
-    private static final int MILLIS_PER_DAY = MILLIS_PER_HOUR * 24;
+    private static final int MILLIS_PER_MINUTE = MILLIS_PER_SECOND * TimeUnitRelations.SECONDS_PER_MINUTE;
+    private static final int MILLIS_PER_HOUR = MILLIS_PER_MINUTE * TimeUnitRelations.MINUTES_PER_HOUR;
+    private static final int MILLIS_PER_DAY = MILLIS_PER_HOUR * TimeUnitRelations.HOURS_PER_DAY;
 
     static final long MAX_SECONDS = Long.MAX_VALUE / TICKS_PER_SECOND;
     static final long MIN_SECONDS = Long.MIN_VALUE / TICKS_PER_SECOND;
@@ -51,34 +50,34 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
     public static final TimeSpan MAX_VALUE = new TimeSpan(Long.MAX_VALUE);
     public static final TimeSpan MIN_VALUE = new TimeSpan(Long.MIN_VALUE);
 
-    // Internal so that dataworks.time.DateTime doesn't have to call an extra get method for some arithmetic operations.
+    // Package-private so that dataworks.datetime.DateTime doesn't have to call an extra get method for some arithmetic operations.
     long ticks;
-
 
     public TimeSpan(long ticks)
     {
         this.ticks = ticks;
     }
 
-
     public TimeSpan(int hours, int minutes, int seconds)
     {
-
+        ticks = timeToTicks(hours, minutes, seconds);
     }
-
 
     public TimeSpan(int days, int hours, int minutes, int seconds)
     {
         this(days, hours, minutes, seconds, 0);
     }
 
-
     public TimeSpan(int days, int hours, int minutes, int seconds, int milliseconds)
     {
-        long totalMilliSeconds = ((long) days * 3600 * 24 + (long) hours * 3600 + (long) minutes * 60 + seconds) * 1000 + milliseconds;
+        long totalMilliSeconds = ((long) days * TimeUnitRelations.SECONDS_PER_DAY +
+                                  (long) hours * TimeUnitRelations.SECONDS_PER_HOUR +
+                                  (long) minutes * TimeUnitRelations.SECONDS_PER_MINUTE + seconds)
+                                  * TimeUnitRelations.MILLISECONDS_PER_SECOND
+                                  + milliseconds;
         if ((totalMilliSeconds > MAX_MILLI_SECONDS) || (totalMilliSeconds < MIN_MILLI_SECONDS))
             throw new IllegalArgumentException("TimeSpan value overflow (TimeSpan too long).");
-        ticks = (long) totalMilliSeconds * TICKS_PER_MILLISECOND;
+        ticks = totalMilliSeconds * TICKS_PER_MILLISECOND;
     }
 
     public long getTicks()
@@ -93,22 +92,22 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
 
     public int getHours()
     {
-        return (int) ((ticks / TICKS_PER_HOUR) % 24);
+        return (int) ((ticks / TICKS_PER_HOUR) % TimeUnitRelations.HOURS_PER_DAY);
     }
 
     public int getMilliseconds()
     {
-        return (int) ((ticks / TICKS_PER_MILLISECOND) % 1000);
+        return (int) ((ticks / TICKS_PER_MILLISECOND) % TimeUnitRelations.MILLISECONDS_PER_SECOND);
     }
 
     public int getMinutes()
     {
-        return (int) ((ticks / TICKS_PER_MINUTE) % 60);
+        return (int) ((ticks / TICKS_PER_MINUTE) % TimeUnitRelations.MINUTES_PER_HOUR);
     }
 
     public int getSeconds()
     {
-        return (int) ((ticks / TICKS_PER_SECOND) % 60);
+        return (int) ((ticks / TICKS_PER_SECOND) % TimeUnitRelations.SECONDS_PER_MINUTE);
     }
 
     public double getTotalDays()
@@ -141,10 +140,9 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return (double) ticks * SECONDS_PER_TICK;
     }
 
-    public TimeSpan add(@NotNull TimeSpan timeSpan)
+    public TimeSpan add(TimeSpan timeSpan)
     {
-        if (timeSpan == null)
-            throw new NullPointerException("Argument \"timeSpan\" cannot be null.");
+        Objects.requireNonNull(timeSpan, "Argument \"timeSpan\" cannot be null.");
 
         long result = this.ticks + timeSpan.ticks;
 
@@ -155,13 +153,10 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return new TimeSpan(result);
     }
 
-
     public static int compare(TimeSpan t1, TimeSpan t2)
     {
-        if (t1 == null)
-            throw new NullPointerException("Argument \"t1\" cannot be null.");
-        if (t2 == null)
-            throw new NullPointerException("Argument \"t2\" cannot be null.");
+        Objects.requireNonNull(t1, "Argument \"t1\" cannot be null.");
+        Objects.requireNonNull(t2, "Argument \"t2\" cannot be null.");
 
         //        if (t1.ticks > t2.ticks)
         //            return 1;
@@ -171,7 +166,6 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return Long.compare(t1.ticks, t2.ticks);
     }
 
-    @NotNull
     public static TimeSpan fromDays(double value)
     {
         return interval(value, MILLIS_PER_DAY);
@@ -183,7 +177,6 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
             throw new OverflowException("Overflow duration");
         return new TimeSpan(ticks >= 0 ? ticks : -ticks);
     }
-
 
     @Override
     public boolean equals(Object value)
@@ -203,7 +196,6 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return ticks == value.ticks;
     }
 
-
     public static boolean equals(TimeSpan t1, TimeSpan t2)
     {
         if ((t1 == null) || (t2 == null))
@@ -218,19 +210,16 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return (int) ticks ^ (int) (ticks >> 32);
     }
 
-    @NotNull
     public static TimeSpan fromHours(double value)
     {
         return interval(value, MILLIS_PER_HOUR);
     }
 
-    @NotNull
     public static TimeSpan fromMilliseconds(double value)
     {
         return interval(value, 1);
     }
 
-    @NotNull
     public static TimeSpan fromMinutes(double value)
     {
         return interval(value, MILLIS_PER_MINUTE);
@@ -243,7 +232,6 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return new TimeSpan(-ticks);
     }
 
-    @NotNull
     public static TimeSpan fromSeconds(double value)
     {
         return interval(value, MILLIS_PER_SECOND);
@@ -264,8 +252,6 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return new TimeSpan(result);
     }
 
-    @NotNull
-
     public static TimeSpan fromTicks(long value)
     {
         return new TimeSpan(value);
@@ -280,24 +266,27 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return totalSeconds * TICKS_PER_SECOND;
     }
 
-    @NotNull
-
     private static TimeSpan interval(double value, double scale)
     {
         if (Double.isNaN(value))
             throw new IllegalArgumentException("Argument \"value\" cannot be NaN.");
 
         double temp = value * scale;
-        double millis = temp + (value >= 0.5 ? 0.5 : -0.5); // TODO: Figure out this +- 0.5.
+
+        // Accurate to ± 0.5 ms.
+        double millis = temp + (value >= 0.5 ? 0.5 : -0.5);
         if ((millis > Long.MAX_VALUE / TICKS_PER_MILLISECOND) || (millis < Long.MIN_VALUE / TICKS_PER_MILLISECOND))
             throw new OverflowException("Overflow (TimeSpan too long).");
         return new TimeSpan((long) millis * TICKS_PER_MILLISECOND);
     }
 
-
     @Override
-    public int compareTo(@NotNull TimeSpan o)
+    public int compareTo(TimeSpan o)
     {
-        return 0;
+        if (o == null)
+            return 1;
+
+        long t = o.ticks;
+        return Long.compare(ticks, t);
     }
 }

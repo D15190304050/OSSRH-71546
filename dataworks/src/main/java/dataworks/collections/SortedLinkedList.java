@@ -170,7 +170,7 @@ public class SortedLinkedList<T extends Comparable<T>> implements ICollection<T>
      *
      * @return an Iterator.
      */
-    @NotNull
+
     @Override
     public Iterator<T> iterator()
     {

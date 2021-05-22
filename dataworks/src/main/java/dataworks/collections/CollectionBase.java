@@ -56,7 +56,7 @@ public abstract class CollectionBase implements IList, Serializable
      * @return an Iterator.
      */
     @Override
-    public @NotNull Iterator iterator()
+    public Iterator iterator()
     {
         return null;
     }

@@ -13,7 +13,7 @@ public class XmlNode implements Serializable, Cloneable, Iterable
      *
      * @return an Iterator.
      */
-    @NotNull
+
     @Override
     public Iterator iterator()
     {

@@ -377,7 +377,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
      *
      * */
     @Nullable
-    private Node removeMax(@NotNull Node node)
+    private Node removeMax(Node node)
     {
         if (isRed(node.left))
             node = rotateRight(node);
@@ -512,7 +512,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
      *
      * @return an Iterator.
      */
-    @NotNull
+
     @Override
     public Iterator<KeyValuePair<TKey, TValue>> iterator()
     {
@@ -642,7 +642,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
     }
 
 
-    private Node rotateLeft(@NotNull Node h)
+    private Node rotateLeft(Node h)
     {
         assert (h != null) && isRed(h.right);
         Node x = h.right;
@@ -655,7 +655,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
         return x;
     }
 
-    private Node rotateRight(@NotNull Node h)
+    private Node rotateRight(Node h)
     {
         assert (h != null) && isRed(h.left);
         Node x = h.left;
@@ -795,7 +795,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
 
         private Iterator<T> iterator;
 
-        private CollectionIterator(@NotNull SortedDictionary<TKey, TValue> dictionary)
+        private CollectionIterator(SortedDictionary<TKey, TValue> dictionary)
         {
             this.version = dictionary.version;
             this.dictionary = dictionary;

@@ -404,7 +404,7 @@ public class DateTime implements Serializable, Comparable<DateTime>
      *                              from being compared to this object.
      */
     @Override
-    public int compareTo(@NotNull DateTime o)
+    public int compareTo(DateTime o)
     {
         return 0;
     }

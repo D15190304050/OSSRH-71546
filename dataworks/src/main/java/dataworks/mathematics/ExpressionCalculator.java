@@ -39,7 +39,7 @@ public class ExpressionCalculator
         return tokens;
     }
 
-    private static boolean isNumber(@NotNull String token)
+    private static boolean isNumber(String token)
     {
         for (int i = 0; i < token.length(); i++)
         {

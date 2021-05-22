@@ -16,7 +16,7 @@ public class DbscanSegment
 
     private DbscanSegment(){}
 
-    @NotNull
+
 
     public static Iterable<TrajectorySegment> segment(Trajectory trajectory, int minPoints, double minDistance)
     {

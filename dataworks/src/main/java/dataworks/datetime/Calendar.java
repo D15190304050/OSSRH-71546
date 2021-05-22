@@ -201,7 +201,7 @@ public class Calendar implements Cloneable, Serializable
         isReadOnly = readOnly;
     }
 
-    @NotNull
+
 
     public static Calendar readOnly(Calendar calendar)
     {

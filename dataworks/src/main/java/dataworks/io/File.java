@@ -88,7 +88,7 @@ public final class File
      * some other reason cannot be opened for reading.
      * @exception NullPointerException If {@code path} is null.
      * */
-    @NotNull
+
 
     public static FileInputStream openRead(String path) throws java.io.FileNotFoundException
     {
@@ -104,7 +104,7 @@ public final class File
      * exist but cannot be created, or cannot be opened for any other reason.
      * @exception NullPointerException If {@code path} is null.
      * */
-    @NotNull
+
 
     public static FileOutputStream openWrite(String path) throws java.io.FileNotFoundException
     {
@@ -120,7 +120,7 @@ public final class File
      * exist but cannot be created, or cannot be opened for any other reason.
      * @exception NullPointerException If @code path} is null.
      * */
-    @NotNull
+
 
     public static FileOutputStream openAppend(String path) throws java.io.FileNotFoundException
     {
@@ -217,7 +217,7 @@ public final class File
      * some other reason cannot be opened for reading.
      * @exception NullPointerException If {@code path} is null.
      * */
-    @NotNull
+
     public static byte[] readAllBytes(String path) throws IOException
     {
         validatePath(path);

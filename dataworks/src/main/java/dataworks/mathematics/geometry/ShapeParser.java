@@ -49,7 +49,7 @@ public class ShapeParser
      * @throws IllegalArgumentException If at least one of the keys "A", "B", "C" is not contained in "lineJson".
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "A" is "true").
      */
-    @NotNull
+
 
     public static Line parseLine(JSONObject lineJson)
     {
@@ -90,7 +90,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "A" is "true").
      * @implNote This method calls {@link ShapeParser#parseLine(JSONObject)}.
      */
-    @NotNull
+
 
     public static Line parseLine(String lineJson)
     {
@@ -121,7 +121,7 @@ public class ShapeParser
      * @throws IllegalArgumentException If at least one of the keys "CenterX", "CenterY", "Radius" is not contained in "circleJson".
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "CenterX" is "true").
      */
-    @NotNull
+
 
     public static Circle parseCircle(JSONObject circleJson)
     {
@@ -164,7 +164,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "CenterX" is "true").
      * @implNote This method calls {@link ShapeParser#parseCircle(JSONObject)}.
      */
-    @NotNull
+
 
     public static Circle parseCircle(String circleJson)
     {
@@ -193,7 +193,7 @@ public class ShapeParser
      * @throws IllegalArgumentException If at least one of the keys "X", "Y" is not contained in "pointJson".
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "X" is "true").
      */
-    @NotNull
+
 
     public static Point parsePoint(JSONObject pointJson)
     {
@@ -230,7 +230,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "X" is "true").
      * @implNote This method calls {@link ShapeParser#parsePoint(JSONObject)}.
      */
-    @NotNull
+
 
     public static Point parsePoint(String pointJson)
     {
@@ -269,7 +269,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "X" is "true").
      * @throws JSONException            If the value associated with key "EndPoint1" or key "EndPoint2" is not a valid JSON object.
      */
-    @NotNull
+
 
     public static LineSegment parseLineSegment(JSONObject lineSegmentJson)
     {
@@ -336,7 +336,7 @@ public class ShapeParser
      * @throws JSONException            If the value associated with key "EndPoint1" or key "EndPoint2" is not a valid JSON object.
      * @implNote This method calls {@link ShapeParser#parseLineSegment(JSONObject)}.
      */
-    @NotNull
+
 
     public static LineSegment parseLineSegment(String lineSegmentJson)
     {
@@ -372,7 +372,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "X" is "true").
      * @throws JSONException            If the value associated with key "Points" is not a valid JSON array.
      */
-    @NotNull
+
 
     public static Polyline parsePolyline(JSONObject polylineJson)
     {
@@ -429,7 +429,7 @@ public class ShapeParser
      * @throws JSONException            If the value associated with key "Points" is not a valid JSON array.
      * @implNote This method calls {@link ShapeParser#parsePolyline(JSONObject)}.
      */
-    @NotNull
+
 
     public static Polyline parsePolyline(String polylineJson)
     {
@@ -461,7 +461,7 @@ public class ShapeParser
      * @throws IllegalArgumentException If at least one of the keys "MinX", "MinY", "MaxX", "MaxY" is not contained in "boundingBoxJson".
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "MaxX" is "true").
      */
-    @NotNull
+
 
     public static BoundingBox parseBoundingBox(JSONObject boundingBoxJson)
     {
@@ -510,7 +510,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "MaxX" is "true").
      * @implNote This method calls {@link ShapeParser#parseBoundingBox(JSONObject)}.
      */
-    @NotNull
+
 
     public static BoundingBox parseBoundingBox(String boundingBoxJson)
     {

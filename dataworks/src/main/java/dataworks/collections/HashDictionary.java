@@ -224,7 +224,7 @@ public class HashDictionary<TKey, TValue> implements IDictionary<TKey, TValue>, 
      * @return an Iterator.
      */
     @Override
-    public @NotNull Iterator<KeyValuePair<TKey, TValue>> iterator()
+    public Iterator<KeyValuePair<TKey, TValue>> iterator()
     {
         return null;
     }
@@ -330,7 +330,7 @@ public class HashDictionary<TKey, TValue> implements IDictionary<TKey, TValue>, 
          * @return an Iterator.
          */
         @Override
-        public @NotNull Iterator<TKey> iterator()
+        public Iterator<TKey> iterator()
         {
             return null;
         }
@@ -437,7 +437,7 @@ public class HashDictionary<TKey, TValue> implements IDictionary<TKey, TValue>, 
          * @return an Iterator.
          */
         @Override
-        public @NotNull Iterator<TValue> iterator()
+        public Iterator<TValue> iterator()
         {
             return null;
         }

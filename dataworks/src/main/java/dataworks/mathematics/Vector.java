@@ -133,7 +133,7 @@ public class Vector implements Serializable
         return result;
     }
 
-    @NotNull
+
     public static Vector subtract(double scalar, Vector vector)
     {
         validateVector(vector);
@@ -253,13 +253,13 @@ public class Vector implements Serializable
             throw new IndexOutOfBoundsException("Error index for vector operation: " + index);
     }
 
-    public void validateCount(@NotNull Vector vector)
+    public void validateCount(Vector vector)
     {
         if (this.count() != vector.count())
             throw new IllegalArgumentException("Argument \"vector\" has different count with the object call this method.");
     }
 
-    @NotNull
+
 
     public static Vector[] pointsToVectors(Point[] points)
     {
@@ -273,7 +273,7 @@ public class Vector implements Serializable
         return vectors;
     }
 
-    @NotNull
+
 
     public static Vector[] pointsToVectors(IReadOnlyCollection<Point> points)
     {
@@ -288,7 +288,7 @@ public class Vector implements Serializable
         return vectors;
     }
 
-    @NotNull
+
 
     public static Vector[] pointsToVectors(Iterable<Point> points)
     {

@@ -140,7 +140,7 @@ public class DbscanVisualization extends Application
         primaryStage.show();
     }
 
-    private static void addPoint(@NotNull Pane canvas, @NotNull Point point, Paint fill)
+    private static void addPoint(Pane canvas, Point point, Paint fill)
     {
         Circle c = new Circle(point.getX(), point.getY(), 5, fill);
         canvas.getChildren().add(c);

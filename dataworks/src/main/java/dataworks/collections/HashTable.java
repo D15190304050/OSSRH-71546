@@ -603,7 +603,7 @@ public class HashTable implements ICollection<KeyValuePair<Object, Object>>, Ser
      * @return an Iterator.
      */
     @Override
-    public @NotNull Iterator<KeyValuePair<Object, Object>> iterator()
+    public Iterator<KeyValuePair<Object, Object>> iterator()
     {
         return null;
     }

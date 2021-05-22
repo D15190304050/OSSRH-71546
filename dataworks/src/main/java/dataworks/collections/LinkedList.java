@@ -282,7 +282,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
         LinkedList<T> linkedList = this;
         return new Iterable<T>()
         {
-            @NotNull
+
             @Override
             public Iterator<T> iterator()
             {
@@ -445,7 +445,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
      *
      * @param newNode The new {@link LinkedListNode} to add to this {@link LinkedList}.
      */
-    private void internalInsertNodeToEmptyList(@NotNull LinkedListNode<T> newNode)
+    private void internalInsertNodeToEmptyList(LinkedListNode<T> newNode)
     {
         assert ((first == null) && (count == 0));
         newNode.next = newNode;
@@ -461,7 +461,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
      * @param node    The {@link LinkedListNode} before which to insert a new {@link LinkedListNode} containing value.
      * @param newNode The new {@link LinkedListNode} to add to this {@link LinkedList}.
      */
-    private void internalInsertNodeBefore(@NotNull LinkedListNode<T> node, @NotNull LinkedListNode<T> newNode)
+    private void internalInsertNodeBefore(LinkedListNode<T> node, LinkedListNode<T> newNode)
     {
         newNode.next = node;
         newNode.previous = node.previous;
@@ -477,7 +477,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
      * @param node The {@link LinkedListNode} to remove from this {@link LinkedList}.
      * @throws IllegalArgumentException The specified {@link LinkedListNode} is not in this {@link LinkedList}.
      */
-    private void internalRemoveNode(@NotNull LinkedListNode<T> node)
+    private void internalRemoveNode(LinkedListNode<T> node)
     {
         assert (node.list == this);
         assert (first != null);
@@ -505,7 +505,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
      *
      * @return An iterator over elements of type {@code T} in this {@link LinkedList}.
      */
-    @NotNull
+
     @Override
     public Iterator<T> iterator()
     {
@@ -540,7 +540,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
          *
          * @param list The specified {@link LinkedList}.
          */
-        public ListIterator(@NotNull LinkedList<T> list)
+        public ListIterator(LinkedList<T> list)
         {
             this.started = false;
             this.current = list.first;
@@ -601,7 +601,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
          */
         private int version;
 
-        public ReverseListIterator(@NotNull LinkedList<T> list)
+        public ReverseListIterator(LinkedList<T> list)
         {
             this.started = false;
             this.current = list.first.previous;

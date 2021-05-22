@@ -53,7 +53,7 @@ public class ReadOnlyCollection<T> implements IList<T>
      * @return an Iterator.
      */
     @Override
-    public @NotNull Iterator<T> iterator()
+    public Iterator<T> iterator()
     {
         return null;
     }

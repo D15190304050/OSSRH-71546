@@ -274,7 +274,7 @@ public class SortedSet<T> implements ISet<T>, Serializable
      *
      * @return an Iterator.
      */
-    @NotNull
+
     @Override
     public Iterator<T> iterator()
     {

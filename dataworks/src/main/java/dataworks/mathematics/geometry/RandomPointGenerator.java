@@ -46,7 +46,7 @@ public class RandomPointGenerator
             throw new IllegalArgumentException("Argument \"radius\" must be positive.");
     }
 
-    @NotNull
+
     private static Point nextPoint(double centerX, double centerY, double length)
     {
         double angle = Random.uniform(2 * Math.PI);

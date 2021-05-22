@@ -57,7 +57,7 @@ public class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, Seri
         this(dictionary, new DefaultComparator<>());
     }
 
-    public Dictionary(@NotNull IDictionary<TKey, TValue> dictionary, Comparator<TKey> comparator)
+    public Dictionary(IDictionary<TKey, TValue> dictionary, Comparator<TKey> comparator)
     {
         count = 0;
         first = null;
@@ -179,7 +179,7 @@ public class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, Seri
      * @throws IllegalArgumentException An element with the same key already exists in this {@link IDictionary}.
      */
     @Override
-    public void add(@NotNull KeyValuePair<TKey, TValue> keyValuePair)
+    public void add(KeyValuePair<TKey, TValue> keyValuePair)
     {
         add(keyValuePair.getKey(), keyValuePair.getValue());
     }
@@ -323,7 +323,7 @@ public class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, Seri
      * <code>false</code>.
      */
     @Override
-    public boolean contains(@NotNull KeyValuePair<TKey, TValue> keyValuePair)
+    public boolean contains(KeyValuePair<TKey, TValue> keyValuePair)
     {
         return containsKeyValue(keyValuePair.getKey(), keyValuePair.getValue());
     }
@@ -380,7 +380,7 @@ public class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, Seri
      * {@link ICollection}.
      */
     @Override
-    public boolean remove(@NotNull KeyValuePair<TKey, TValue> keyValuePair)
+    public boolean remove(KeyValuePair<TKey, TValue> keyValuePair)
     {
         validateKey(keyValuePair.getKey());
 
@@ -425,7 +425,7 @@ public class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, Seri
 
         private Iterator<T> iterator;
 
-        private CollectionIterator(@NotNull Dictionary<TKey, TValue> dictionary)
+        private CollectionIterator(Dictionary<TKey, TValue> dictionary)
         {
             this.version = dictionary.version;
             this.dictionary = dictionary;
@@ -513,7 +513,7 @@ public class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, Seri
      *
      * @return an Iterator.
      */
-    @NotNull
+
     @Override
     public Iterator<KeyValuePair<TKey, TValue>> iterator()
     {

@@ -18,7 +18,7 @@ public class Mathematics
     }
 
 
-    public static int max(@NotNull int... array)
+    public static int max(int... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -34,7 +34,7 @@ public class Mathematics
     }
 
 
-    public static double max(@NotNull double... array)
+    public static double max(double... array)
     {
         if (array.length == 0)
         throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -50,7 +50,7 @@ public class Mathematics
     }
 
 
-    public static long max(@NotNull long... array)
+    public static long max(long... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -66,7 +66,7 @@ public class Mathematics
     }
 
 
-    public static short max(@NotNull short... array)
+    public static short max(short... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -82,7 +82,7 @@ public class Mathematics
     }
 
 
-    public static float max(@NotNull float... array)
+    public static float max(float... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -98,7 +98,7 @@ public class Mathematics
     }
 
 
-    public static int min(@NotNull int... array)
+    public static int min(int... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -114,7 +114,7 @@ public class Mathematics
     }
 
 
-    public static double min(@NotNull double... array)
+    public static double min(double... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -130,7 +130,7 @@ public class Mathematics
     }
 
 
-    public static long min(@NotNull long... array)
+    public static long min(long... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -146,7 +146,7 @@ public class Mathematics
     }
 
 
-    public static short min(@NotNull short... array)
+    public static short min(short... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -162,7 +162,7 @@ public class Mathematics
     }
 
 
-    public static float min(@NotNull float... array)
+    public static float min(float... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -178,7 +178,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMax(@NotNull int... array)
+    public static int indexOfMax(int... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -194,7 +194,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMax(@NotNull double... array)
+    public static int indexOfMax(double... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -210,7 +210,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMax(@NotNull long... array)
+    public static int indexOfMax(long... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -226,7 +226,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMax(@NotNull short... array)
+    public static int indexOfMax(short... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -242,7 +242,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMax(@NotNull float... array)
+    public static int indexOfMax(float... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -258,7 +258,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMin(@NotNull int... array)
+    public static int indexOfMin(int... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -274,7 +274,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMin(@NotNull double... array)
+    public static int indexOfMin(double... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -290,7 +290,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMin(@NotNull long... array)
+    public static int indexOfMin(long... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -306,7 +306,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMin(@NotNull short... array)
+    public static int indexOfMin(short... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");
@@ -322,7 +322,7 @@ public class Mathematics
     }
 
 
-    public static int indexOfMin(@NotNull float... array)
+    public static int indexOfMin(float... array)
     {
         if (array.length == 0)
             throw new IllegalArgumentException("The number of arguments for this method should be at least 1.");

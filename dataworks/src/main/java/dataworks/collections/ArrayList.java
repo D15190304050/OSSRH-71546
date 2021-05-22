@@ -303,7 +303,7 @@ public class ArrayList implements IList, Cloneable
      * @return an Iterator.
      */
     @Override
-    public @NotNull Iterator iterator()
+    public Iterator iterator()
     {
         return null;
     }
