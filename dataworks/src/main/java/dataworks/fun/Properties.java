@@ -112,7 +112,7 @@ public class Properties
      * @param outBuffer   A buffer that contains the intermediate and final result to return.
      * @return The parsed key or value.
      */
-    private static String parseEscape(char[] in, int startOffset, int length, StringBuilder outBuffer)
+    private static String loadConvert(char[] in, int startOffset, int length, StringBuilder outBuffer)
     {
         char c;
         int end = startOffset + length;
@@ -208,7 +208,7 @@ public class Properties
         return outBuffer.toString();
     }
 
-    private static String saveEscape(String string, boolean escapeSpace, boolean escapeUnicode)
+    private static String saveConvert(String string, boolean escapeSpace, boolean escapeUnicode)
     {
         int bufferLength = string.length() * 2;
 
@@ -410,6 +410,7 @@ public class Properties
                 keyLength++;
             }
 
+            // Note that we only need to find the start index of "value".
             while (valueStartIndex < currentLineLength.getValue())
             {
                 char c = lineBuffer[valueStartIndex];
@@ -427,8 +428,8 @@ public class Properties
                 valueStartIndex++;
             }
 
-            String key = parseEscape(lineBuffer, 0, keyLength, outputBuffer);
-            String value = parseEscape(lineBuffer, valueStartIndex, currentLineLength.getValue() - valueStartIndex, outputBuffer);
+            String key = loadConvert(lineBuffer, 0, keyLength, outputBuffer);
+            String value = loadConvert(lineBuffer, valueStartIndex, currentLineLength.getValue() - valueStartIndex, outputBuffer);
             setProperty(key, value);
         }
     }

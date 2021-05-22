@@ -30,7 +30,7 @@ public class PropertiesLineReader
     /**
      * A char buffer that contains contents read by the reader.
      */
-    private Character[] lineBuffer;
+    private char[] lineBuffer;
 
     /**
      * The reader that reads contents (properties) from input.
@@ -47,6 +47,11 @@ public class PropertiesLineReader
      */
     private int inputBufferOffset;
 
+    /**
+     * The number of characters in the input buffer, determined by the Reader#read() method.
+     */
+    private int inputLimit;
+
     public PropertiesLineReader(InputStream inputStream)
     {
         this(new InputStreamReader(inputStream));
@@ -56,9 +61,10 @@ public class PropertiesLineReader
     {
         Objects.requireNonNull(reader, "The argument \"inputStream\" can not be null.");
         this.reader = reader;
-        this.lineBuffer = new Character[LINE_BUFFER_INITIAL_CAPACITY];
+        this.lineBuffer = new char[LINE_BUFFER_INITIAL_CAPACITY];
         this.inputBuffer = new char[INPUT_BUFFER_CAPACITY];
         this.inputBufferOffset = 0;
+        this.inputLimit = 0;
     }
 
     public char[] readLine(OutInt currentLineLength) throws IOException
@@ -67,9 +73,6 @@ public class PropertiesLineReader
 
         // Length of the current logical line.
         currentLineLength.setValue(0);
-
-        // The number of characters in the input buffer, determined by the Reader#read() method.
-        int inputLimit = 0;
 
         // Whether we need to skip white space.
         // Only when the white spaces that are part of the value are remained.
@@ -104,7 +107,7 @@ public class PropertiesLineReader
                     // If the current line length is greater than 0, then at least something is read.
                     if (precedingBackslash)
                         currentLineLength.subtractOne();
-                    return inputBuffer;
+                    return lineBuffer;
                 }
 
                 // Reset the input buffer offset to read from the beginning of the buffer.
@@ -144,7 +147,7 @@ public class PropertiesLineReader
                         while (inputBufferOffset < inputLimit)
                         {
                             c = inputBuffer[inputBufferOffset++];
-                            if ((c <= 'r') &&
+                            if ((c <= '\r') &&
                                 (c == '\r' || c == '\n'))
                                 break consumeCommentLoop;
 
@@ -179,8 +182,8 @@ public class PropertiesLineReader
                 // Double the capacity of the current line buffer if it is full and there is still new character to read in this logical line.
                 if (currentLineLength.getValue() == lineBuffer.length)
                 {
-                    Character[] newLineBuffer = new Character[lineBuffer.length * 2];
-                    ArrayHelper.copy(lineBuffer, 0, newLineBuffer, 0, lineBuffer.length);
+                    char[] newLineBuffer = new char[lineBuffer.length * 2];
+                    System.arraycopy(lineBuffer, 0, newLineBuffer, 0, lineBuffer.length);
                     lineBuffer = newLineBuffer;
                 }
 
@@ -217,7 +220,7 @@ public class PropertiesLineReader
                         if (precedingBackslash)
                             currentLineLength.subtractOne();
 
-                        return inputBuffer;
+                        return lineBuffer;
                     }
 
                     // Reset the input buffer offset to read from the beginning of the buffer.
@@ -241,7 +244,7 @@ public class PropertiesLineReader
                         inputBufferOffset++;
                 }
                 else
-                    return inputBuffer;
+                    return lineBuffer;
             }
         }
     }
