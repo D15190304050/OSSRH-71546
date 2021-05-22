@@ -14,7 +14,7 @@ public class Line implements IShape2D
     private double b;
     private double c;
 
-    @Contract(pure = true)
+
     public Line()
     {
         this(1, 0, 0);
@@ -27,7 +27,7 @@ public class Line implements IShape2D
      * @param c
      * @implSpec If the equation of the line is "0x + 0y + C = 0", then it is not a line.
      */
-    @Contract(pure = true)
+
     public Line(double a, double b, double c)
     {
         validateArguments(a, b);
@@ -44,7 +44,7 @@ public class Line implements IShape2D
      * @param point2 Another point that this line crosses.
      * @implSpec If |point1.getX() - point2.getX()| < {@link Mathematics#getEpsilon()}, then the program assumes the line is perpendicular to the x-axis.
      */
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     public Line(Point point1, Point point2)
     {
         this(point1, point2, Mathematics.getEpsilon());

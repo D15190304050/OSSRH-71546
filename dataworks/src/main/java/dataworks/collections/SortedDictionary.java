@@ -60,7 +60,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
      * @return {@code true} if the specified node is red; otherwise, false. It also returns false if the specified node
      * is null.
      */
-    @Contract(value = "null -> false", pure = true)
+
     private boolean isRed(Node node)
     {
         if (node == null)
@@ -340,7 +340,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
     /**
      * Removes the key value pair with the minimum key rooted at {@code node}.
      */
-    @Contract("null -> null")
+
     private Node removeMin(Node node)
     {
         if (node.left == null)
@@ -641,7 +641,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
         return balance(h);
     }
 
-    @Contract("null -> fail")
+
     private Node rotateLeft(@NotNull Node h)
     {
         assert (h != null) && isRed(h.right);
@@ -686,7 +686,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
      * Assuming that {@code node} is red and both {@code node.left} and {@code node.left.left} are black, make
      * {@code node.left} or one of its children red.
      */
-    @Contract("null -> fail")
+
     private Node moveRedLeft(Node h)
     {
         assert (h != null);
@@ -706,7 +706,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
      * Assuming that {@code node} is red and both {@code node.right} and {@code node.right.left} are black, make
      * {@code node.right} or one of its children red.
      */
-    @Contract("null -> fail")
+
     private Node moveRedRight(Node h)
     {
         assert (h != null);
@@ -741,7 +741,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
      * Finds and returns the node with the minimum key rooted at the specified node; return null if the specified is
      * null.
      */
-    @Contract(value = "null -> null", pure = true)
+
     private Node minAt(Node root)
     {
         if (root == null)
@@ -758,7 +758,7 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
      * Finds and returns the node with the maximum key rooted at the specified node; return null if the specified is
      * null.
      */
-    @Contract(value = "null -> null", pure = true)
+
     private Node maxAt(Node root)
     {
         if (root == null)
@@ -771,14 +771,14 @@ public class SortedDictionary<TKey extends Comparable<TKey>, TValue> implements 
         return max;
     }
 
-    @Contract("null -> fail")
+
     private void validateKey(TKey key)
     {
         if (key == null)
             throw new NullPointerException("Argument \"key\" cannot be null.");
     }
 
-    @Contract("null -> fail")
+
     private void validateKeyValuePair(KeyValuePair<TKey, TValue> keyValuePair)
     {
         if (keyValuePair == null)

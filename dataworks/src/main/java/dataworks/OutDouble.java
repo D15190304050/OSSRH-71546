@@ -9,7 +9,6 @@ public class OutDouble
 {
     private double value;
 
-    @Contract(pure = true)
     public OutDouble(double value)
     {
         this.value = value;

@@ -12,7 +12,7 @@ public class DouglasPeucker
     private int[] labels;
     private int directionCount;
 
-    @Contract("null, _ -> fail")
+
     public DouglasPeucker(Iterable<Point> points, double maxDistance)
     {
         if (points == null)

@@ -12,13 +12,13 @@ public class Vector implements Serializable
 {
     private double[] vector;
 
-    @Contract(pure = true)
+
     public int count()
     {
         return vector.length;
     }
 
-    @Contract(pure = true)
+
     public Vector(int count)
     {
         if (count <= 0)
@@ -27,7 +27,7 @@ public class Vector implements Serializable
         vector = new double[count];
     }
 
-    @Contract("null -> fail")
+
     public Vector(double... vector)
     {
         validateVector(vector);
@@ -37,7 +37,7 @@ public class Vector implements Serializable
             this.set(i, vector[i]);
     }
 
-    @Contract("null, _, _ -> fail")
+
     public Vector(double[] vector, int startIndex, int endIndex)
     {
         validateVector(vector);
@@ -55,7 +55,7 @@ public class Vector implements Serializable
             this.vector[i] = vector[i + startIndex];
     }
 
-    @Contract("null -> fail")
+
     public Vector(Vector vector)
     {
         validateVector(vector);
@@ -215,7 +215,7 @@ public class Vector implements Serializable
         return result;
     }
 
-    @Contract(value = "null -> false", pure = true)
+
     @Override
     public boolean equals(Object obj)
     {
@@ -260,7 +260,7 @@ public class Vector implements Serializable
     }
 
     @NotNull
-    @Contract("null -> fail")
+
     public static Vector[] pointsToVectors(Point[] points)
     {
         if (points == null)
@@ -274,7 +274,7 @@ public class Vector implements Serializable
     }
 
     @NotNull
-    @Contract("null -> fail")
+
     public static Vector[] pointsToVectors(IReadOnlyCollection<Point> points)
     {
         if (points == null)
@@ -289,7 +289,7 @@ public class Vector implements Serializable
     }
 
     @NotNull
-    @Contract("null -> fail")
+
     public static Vector[] pointsToVectors(Iterable<Point> points)
     {
         if (points == null)
@@ -331,14 +331,14 @@ public class Vector implements Serializable
         return vectorString.toString();
     }
 
-    @Contract("null -> fail")
+
     public static void validateVector(Vector vector)
     {
         if (vector == null)
             throw new NullPointerException("Argument \"vector\" cannot be null.");
     }
 
-    @Contract("null -> fail")
+
     public static void validateVector(double... vector)
     {
         if (vector == null)

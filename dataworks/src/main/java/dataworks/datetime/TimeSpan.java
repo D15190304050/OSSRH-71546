@@ -54,25 +54,25 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
     // Internal so that dataworks.time.DateTime doesn't have to call an extra get method for some arithmetic operations.
     long ticks;
 
-    @Contract(pure = true)
+
     public TimeSpan(long ticks)
     {
         this.ticks = ticks;
     }
 
-    @Contract(pure = true)
+
     public TimeSpan(int hours, int minutes, int seconds)
     {
 
     }
 
-    @Contract(pure = true)
+
     public TimeSpan(int days, int hours, int minutes, int seconds)
     {
         this(days, hours, minutes, seconds, 0);
     }
 
-    @Contract(pure = true)
+
     public TimeSpan(int days, int hours, int minutes, int seconds, int milliseconds)
     {
         long totalMilliSeconds = ((long) days * 3600 * 24 + (long) hours * 3600 + (long) minutes * 60 + seconds) * 1000 + milliseconds;
@@ -155,7 +155,7 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return new TimeSpan(result);
     }
 
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     public static int compare(TimeSpan t1, TimeSpan t2)
     {
         if (t1 == null)
@@ -184,7 +184,7 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return new TimeSpan(ticks >= 0 ? ticks : -ticks);
     }
 
-    @Contract(value = "null -> false", pure = true)
+
     @Override
     public boolean equals(Object value)
     {
@@ -203,7 +203,7 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
         return ticks == value.ticks;
     }
 
-    @Contract(value = "null, _ -> false; !null, null -> false", pure = true)
+
     public static boolean equals(TimeSpan t1, TimeSpan t2)
     {
         if ((t1 == null) || (t2 == null))
@@ -265,7 +265,7 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
     }
 
     @NotNull
-    @Contract(value = "_ -> new", pure = true)
+
     public static TimeSpan fromTicks(long value)
     {
         return new TimeSpan(value);
@@ -281,7 +281,7 @@ public class TimeSpan implements Serializable, Comparable<TimeSpan>
     }
 
     @NotNull
-    @Contract("_, _ -> new")
+
     private static TimeSpan interval(double value, double scale)
     {
         if (Double.isNaN(value))

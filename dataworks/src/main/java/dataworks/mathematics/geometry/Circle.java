@@ -8,13 +8,13 @@ public class Circle implements IShape2D
     private double centerY;
     private double radius;
 
-    @Contract(pure = true)
+
     public Circle()
     {
         this(0, 0, 1);
     }
 
-    @Contract(pure = true)
+
     public Circle(double centerX, double centerY, double radius)
     {
         validateRadius(radius);
@@ -61,7 +61,7 @@ public class Circle implements IShape2D
         return distanceToCenterSquare <= radius * radius;
     }
 
-    @Contract(pure = true)
+
     private double distanceToCenterSquare(double x, double y)
     {
         double deltaX = x - centerX;

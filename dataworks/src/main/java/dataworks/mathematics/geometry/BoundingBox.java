@@ -14,7 +14,7 @@ public class BoundingBox implements IShape2D
     private double maxX;
     private double maxY;
 
-    @Contract(pure = true)
+
     public BoundingBox(double minX, double minY, double maxX, double maxY)
     {
         this.minX = minX;
@@ -23,7 +23,7 @@ public class BoundingBox implements IShape2D
         this.maxY = maxY;
     }
 
-    @Contract("null -> fail")
+
     public BoundingBox(Point[] points)
     {
         if (points == null)
@@ -56,7 +56,7 @@ public class BoundingBox implements IShape2D
      *
      * @param points A collection of points.
      */
-    @Contract("null -> fail")
+
     public BoundingBox(Iterable<Point> points)
     {
         if (points == null)
@@ -167,7 +167,7 @@ public class BoundingBox implements IShape2D
         return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 
-    @Contract(value = "null -> false", pure = true)
+
     @Override
     public boolean equals(Object obj)
     {

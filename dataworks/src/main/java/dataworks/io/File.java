@@ -89,7 +89,7 @@ public final class File
      * @exception NullPointerException If {@code path} is null.
      * */
     @NotNull
-    @Contract("_ -> new")
+
     public static FileInputStream openRead(String path) throws java.io.FileNotFoundException
     {
         validatePath(path);
@@ -105,7 +105,7 @@ public final class File
      * @exception NullPointerException If {@code path} is null.
      * */
     @NotNull
-    @Contract("_ -> new")
+
     public static FileOutputStream openWrite(String path) throws java.io.FileNotFoundException
     {
         validatePath(path);
@@ -121,7 +121,7 @@ public final class File
      * @exception NullPointerException If @code path} is null.
      * */
     @NotNull
-    @Contract("_ -> new")
+
     public static FileOutputStream openAppend(String path) throws java.io.FileNotFoundException
     {
         validatePath(path);
@@ -506,7 +506,7 @@ public final class File
      * @exception NullPointerException If {@code sourceFileName}/{@code destFileName}/{@code destBackupFileName} is
      * null.
      * */
-    @Contract("null, _, _ -> fail; !null, null, _ -> fail; !null, !null, null -> fail")
+
     public static void replace(String sourceFileName, String destFileName, String destBackupFileName) throws IOException
     {
         if (sourceFileName == null)
@@ -532,7 +532,7 @@ public final class File
         new java.io.File(sourceFileName).renameTo(new java.io.File(destFileName));
     }
 
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     private static void validateSourceDestinationFileName(String sourceFileName, String destFileName)
     {
         if (sourceFileName == null)
@@ -541,14 +541,14 @@ public final class File
             throw new NullPointerException("Argument \"destFileName\" cannot be null.");
     }
 
-    @Contract("null -> fail")
+
     private static void validatePath(String path)
     {
         if (path == null)
             throw new NullPointerException("Argument \"path\" cannot be null.");
     }
 
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     private static void validatePathContents(String path, String[] contents)
     {
         if (path == null)
@@ -557,7 +557,7 @@ public final class File
             throw new NullPointerException("Argument \"contents\" cannot be null.");
     }
 
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     private static void validatePathContents(String path, Iterable<String> contents)
     {
         if (path == null)
@@ -566,7 +566,7 @@ public final class File
             throw new NullPointerException("Argument \"contents\" cannot be null.");
     }
 
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     private static void validatePathContents(String path, String contents)
     {
         if (path == null)
@@ -575,7 +575,7 @@ public final class File
             throw new NullPointerException("Argument \"contents\" cannot be null.");
     }
 
-    @Contract("null -> fail")
+
     private static void validateCharset(Charset charset)
     {
         if (charset == null)

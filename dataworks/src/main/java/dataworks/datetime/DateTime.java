@@ -39,7 +39,7 @@ public class DateTime implements Serializable, Comparable<DateTime>
         int millisecond;
         long hundredNanoSecond;
 
-        @Contract(pure = true)
+
         private static int dayOfWeekToInt(DayOfWeek dayOfWeek)
         {
             if (dayOfWeek == null)
@@ -66,7 +66,7 @@ public class DateTime implements Serializable, Comparable<DateTime>
             }
         }
 
-        @Contract(pure = true)
+
         FullSystemTime(int year, int month, DayOfWeek dayOfWeek, int day, int hour, int minute, int second)
         {
             this.year = year;
@@ -218,7 +218,7 @@ public class DateTime implements Serializable, Comparable<DateTime>
         this.dateData = ticks | ((long) dateTimeKindToInt(kind) << KIND_SHIFT);
     }
 
-    @Contract("null -> fail")
+
     private static int dateTimeKindToInt(DateTimeKind kind)
     {
         if (kind == null)

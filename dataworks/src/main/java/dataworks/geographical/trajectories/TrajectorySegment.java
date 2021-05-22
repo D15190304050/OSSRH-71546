@@ -17,7 +17,7 @@ public class TrajectorySegment
     private LinkedList<TopologicalSpatialRelationship> relationships;
     private Object tag;
 
-    @Contract("null, _ -> fail")
+
     public TrajectorySegment(Iterable<Point> points, boolean moving)
     {
         if (points == null)

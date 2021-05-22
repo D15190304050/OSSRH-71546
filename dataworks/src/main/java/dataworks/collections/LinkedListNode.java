@@ -32,7 +32,7 @@ public final class LinkedListNode<T>
      * Initializes a new instance of {@link LinkedListNode} with specified value.
      * @param value The specified value contained in this {@link LinkedListNode}.
      * */
-    @Contract(pure = true)
+
     public LinkedListNode(T value)
     {
         this.value = value;
@@ -47,7 +47,7 @@ public final class LinkedListNode<T>
      * @param list The specified {@link LinkedList} that contains this {@link LinkedListNode}.
      * @param value The specified value contained in this {@link LinkedListNode}.
      * */
-    @Contract(pure = true)
+
     LinkedListNode(LinkedList<T> list, T value)
     {
         this.value = value;
@@ -60,7 +60,7 @@ public final class LinkedListNode<T>
      * Gets the {@link LinkedList} that contains this {@link LinkedListNode}.
      * @return The {@link LinkedList} that contains this {@link LinkedListNode}.
      * */
-    @Contract(pure = true)
+
     public LinkedList<T> getLinkedList()
     {
         return list;
@@ -70,7 +70,7 @@ public final class LinkedListNode<T>
      * Gets next {@link LinkedListNode} of this {@link LinkedListNode}.
      * @return Next {@link LinkedListNode} of this {@link LinkedListNode}.
      * */
-    @Contract(pure = true)
+
     public LinkedListNode<T> getNext()
     {
         return next;
@@ -80,7 +80,7 @@ public final class LinkedListNode<T>
      * Gets previous {@link LinkedListNode} of this {@link LinkedListNode}.
      * @return Previous {@link LinkedListNode} of this {@link LinkedListNode}.
      * */
-    @Contract(pure = true)
+
     public LinkedListNode<T> getPrevious()
     {
         return previous;
@@ -90,7 +90,7 @@ public final class LinkedListNode<T>
      * Gets the value contained in this {@link LinkedListNode}.
      * @return The value contained in this {@link LinkedListNode}.
      * */
-    @Contract(pure = true)
+
     public T getValue()
     {
         return value;

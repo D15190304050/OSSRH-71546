@@ -9,7 +9,6 @@ public class OutBool
 {
     private boolean value;
 
-    @Contract(pure = true)
     public OutBool(boolean value)
     {
         this.value = value;

@@ -9,7 +9,6 @@ public class OutByte
 {
     private byte value;
 
-    @Contract(pure = true)
     public OutByte(byte value)
     {
         this.value = value;

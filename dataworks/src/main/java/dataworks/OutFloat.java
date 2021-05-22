@@ -1,6 +1,5 @@
 package dataworks;
 
-
 import org.jetbrains.annotations.Contract;
 
 /**
@@ -10,7 +9,6 @@ public class OutFloat
 {
     private float value;
 
-    @Contract(pure = true)
     public OutFloat(float value)
     {
         this.value = value;

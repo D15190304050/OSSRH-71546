@@ -30,7 +30,7 @@ public class Random
     /**
      * This class should not be instantiated.
      */
-    @Contract(pure = true)
+
     private Random()
     {
     }
@@ -54,7 +54,7 @@ public class Random
      *
      * @return the seed
      */
-    @Contract(pure = true)
+
     public static long getSeed()
     {
         return seed;
@@ -295,7 +295,7 @@ public class Random
      * @throws IllegalArgumentException if sum of array entries is not (very nearly) equal to <tt>1.0</tt>
      * @throws IllegalArgumentException unless <tt>probabilities[i] >= 0.0</tt> for each index <tt>i</tt>
      */
-    @Contract("null -> fail")
+
     public static int discrete(double[] probabilities)
     {
         if (probabilities == null)
@@ -337,7 +337,7 @@ public class Random
      * @throws IllegalArgumentException if <tt>frequencies[i]</tt> is negative for any index <tt>i</tt>
      * @throws IllegalArgumentException if sum of frequencies exceeds <tt>Integer.MAX_VALUE</tt> (2<sup>31</sup> - 1)
      */
-    @Contract("null -> fail")
+
     public static int discrete(int[] frequencies)
     {
         if (frequencies == null)
@@ -391,7 +391,7 @@ public class Random
      * @param a the array to shuffle
      * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
      */
-    @Contract("null -> fail")
+
     public static void shuffle(Object[] a)
     {
         if (a == null)
@@ -412,7 +412,7 @@ public class Random
      * @param a the array to shuffle
      * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
      */
-    @Contract("null -> fail")
+
     public static void shuffle(double[] a)
     {
         if (a == null)
@@ -433,7 +433,7 @@ public class Random
      * @param a the array to shuffle
      * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
      */
-    @Contract("null -> fail")
+
     public static void shuffle(int[] a)
     {
         if (a == null)
@@ -457,7 +457,7 @@ public class Random
      * @throws NullPointerException      if <tt>a</tt> is <tt>null</tt>
      * @throws IndexOutOfBoundsException unless <tt>(0 <= lo) && (lo <= hi) && (hi < a.length)</tt>
      */
-    @Contract("null, _, _ -> fail")
+
     public static void shuffle(Object[] a, int lo, int hi)
     {
         if (a == null)
@@ -484,7 +484,7 @@ public class Random
      * @throws NullPointerException      if <tt>a</tt> is <tt>null</tt>
      * @throws IndexOutOfBoundsException unless <tt>(0 <= lo) && (lo <= hi) && (hi < a.length)</tt>
      */
-    @Contract("null, _, _ -> fail")
+
     public static void shuffle(double[] a, int lo, int hi)
     {
         if (a == null)
@@ -511,7 +511,7 @@ public class Random
      * @throws NullPointerException      if <tt>a</tt> is <tt>null</tt>
      * @throws IndexOutOfBoundsException unless <tt>(0 <= lo) && (lo <= hi) && (hi < a.length)</tt>
      */
-    @Contract("null, _, _ -> fail")
+
     public static void shuffle(int[] a, int lo, int hi)
     {
         if (a == null)

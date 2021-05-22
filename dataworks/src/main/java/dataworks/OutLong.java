@@ -9,7 +9,6 @@ public class OutLong
 {
     private long value;
 
-    @Contract(pure = true)
     public OutLong(long value)
     {
         this.value = value;

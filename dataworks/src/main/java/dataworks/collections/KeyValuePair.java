@@ -17,14 +17,14 @@ public class KeyValuePair<TKey, TValue>
         return value;
     }
 
-    @Contract(pure = true)
+
     public KeyValuePair(TKey key, TValue value)
     {
         this.key = key;
         this.value = value;
     }
 
-    @Contract(value = "null -> false", pure = true)
+
     @Override
     public boolean equals(Object that)
     {

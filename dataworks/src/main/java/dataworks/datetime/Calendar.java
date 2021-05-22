@@ -202,7 +202,7 @@ public class Calendar implements Cloneable, Serializable
     }
 
     @NotNull
-    @Contract("null -> fail")
+
     public static Calendar readOnly(Calendar calendar)
     {
         if (calendar == null)

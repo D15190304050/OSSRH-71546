@@ -9,7 +9,6 @@ public class OutChar
 {
     private char value;
 
-    @Contract(pure = true)
     public OutChar(char value)
     {
         this.value = value;

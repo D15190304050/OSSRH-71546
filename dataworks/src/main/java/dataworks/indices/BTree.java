@@ -49,7 +49,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
          * @param value Value of the {@link Entry}.
          * @param next  Next node of the {@link Entry}.
          */
-        @Contract(pure = true)
+
         public Entry(TKey key, TValue value, Node next)
         {
             this.key = key;
@@ -90,7 +90,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
          * @param childrenCount Initial number of {@link Entry} in the {@link Node}.
          * @param maxChildren   Maximum number of {@link Entry} in the {@link Node}.
          */
-        @Contract(pure = true)
+
         private Node(int childrenCount, int maxChildren)
         {
             this.childrenCount = childrenCount;
@@ -133,7 +133,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * @param maxChildren Maximum number of entries in a node. Note that this parameter must be an positive even number
      *                    and greater than 2. If it is 2, it is like a binary tree.
      */
-    @Contract(pure = true)
+
     public BTree(int maxChildren)
     {
         if (maxChildren % 2 == 1)
@@ -238,7 +238,7 @@ public class BTree<TKey extends Comparable<TKey>, TValue> implements IDictionary
      * @throws IllegalArgumentException If try to add a key-value pair to the {@link BTree}, while the specified key
      *                                  exists in the {@link BTree}.
      */
-    @Contract("null, _, _ -> fail; !null, null, _ -> fail")
+
     private void insert(TKey key, TValue value, boolean add)
     {
         if (key == null)

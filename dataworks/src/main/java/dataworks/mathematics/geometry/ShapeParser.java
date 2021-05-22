@@ -28,7 +28,7 @@ public class ShapeParser
     private static final String MAX_Y = "MaxY";
     private static final String MIN_Y = "MinY";
 
-    @Contract(pure = true)
+
     private ShapeParser()
     {
     }
@@ -50,7 +50,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "A" is "true").
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static Line parseLine(JSONObject lineJson)
     {
         if (lineJson == null)
@@ -91,7 +91,7 @@ public class ShapeParser
      * @implNote This method calls {@link ShapeParser#parseLine(JSONObject)}.
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static Line parseLine(String lineJson)
     {
         if (lineJson == null)
@@ -122,7 +122,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "CenterX" is "true").
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static Circle parseCircle(JSONObject circleJson)
     {
         if (circleJson == null)
@@ -165,7 +165,7 @@ public class ShapeParser
      * @implNote This method calls {@link ShapeParser#parseCircle(JSONObject)}.
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static Circle parseCircle(String circleJson)
     {
         if (circleJson == null)
@@ -194,7 +194,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "X" is "true").
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static Point parsePoint(JSONObject pointJson)
     {
         if (pointJson == null)
@@ -231,7 +231,7 @@ public class ShapeParser
      * @implNote This method calls {@link ShapeParser#parsePoint(JSONObject)}.
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static Point parsePoint(String pointJson)
     {
         if (pointJson == null)
@@ -270,7 +270,7 @@ public class ShapeParser
      * @throws JSONException            If the value associated with key "EndPoint1" or key "EndPoint2" is not a valid JSON object.
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static LineSegment parseLineSegment(JSONObject lineSegmentJson)
     {
         if (lineSegmentJson == null)
@@ -337,7 +337,7 @@ public class ShapeParser
      * @implNote This method calls {@link ShapeParser#parseLineSegment(JSONObject)}.
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static LineSegment parseLineSegment(String lineSegmentJson)
     {
         if (lineSegmentJson == null)
@@ -373,7 +373,7 @@ public class ShapeParser
      * @throws JSONException            If the value associated with key "Points" is not a valid JSON array.
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static Polyline parsePolyline(JSONObject polylineJson)
     {
         if (polylineJson == null)
@@ -430,7 +430,7 @@ public class ShapeParser
      * @implNote This method calls {@link ShapeParser#parsePolyline(JSONObject)}.
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static Polyline parsePolyline(String polylineJson)
     {
         if (polylineJson == null)
@@ -462,7 +462,7 @@ public class ShapeParser
      * @throws NumberFormatException    If there is a value associated with a required key, while the value does not contain a parsable {@code double}. (i.e. the value associated with key "MaxX" is "true").
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static BoundingBox parseBoundingBox(JSONObject boundingBoxJson)
     {
         if (boundingBoxJson == null)
@@ -511,7 +511,7 @@ public class ShapeParser
      * @implNote This method calls {@link ShapeParser#parseBoundingBox(JSONObject)}.
      */
     @NotNull
-    @Contract("null -> fail")
+
     public static BoundingBox parseBoundingBox(String boundingBoxJson)
     {
         if (boundingBoxJson == null)

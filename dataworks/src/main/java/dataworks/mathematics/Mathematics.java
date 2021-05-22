@@ -17,7 +17,7 @@ public class Mathematics
         epsilon = 1e-5;
     }
 
-    @Contract(pure = true)
+
     public static int max(@NotNull int... array)
     {
         if (array.length == 0)
@@ -33,7 +33,7 @@ public class Mathematics
         return max;
     }
 
-    @Contract(pure = true)
+
     public static double max(@NotNull double... array)
     {
         if (array.length == 0)
@@ -49,7 +49,7 @@ public class Mathematics
         return max;
     }
 
-    @Contract(pure = true)
+
     public static long max(@NotNull long... array)
     {
         if (array.length == 0)
@@ -65,7 +65,7 @@ public class Mathematics
         return max;
     }
 
-    @Contract(pure = true)
+
     public static short max(@NotNull short... array)
     {
         if (array.length == 0)
@@ -81,7 +81,7 @@ public class Mathematics
         return max;
     }
 
-    @Contract(pure = true)
+
     public static float max(@NotNull float... array)
     {
         if (array.length == 0)
@@ -97,7 +97,7 @@ public class Mathematics
         return max;
     }
 
-    @Contract(pure = true)
+
     public static int min(@NotNull int... array)
     {
         if (array.length == 0)
@@ -113,7 +113,7 @@ public class Mathematics
         return min;
     }
 
-    @Contract(pure = true)
+
     public static double min(@NotNull double... array)
     {
         if (array.length == 0)
@@ -129,7 +129,7 @@ public class Mathematics
         return min;
     }
 
-    @Contract(pure = true)
+
     public static long min(@NotNull long... array)
     {
         if (array.length == 0)
@@ -145,7 +145,7 @@ public class Mathematics
         return min;
     }
 
-    @Contract(pure = true)
+
     public static short min(@NotNull short... array)
     {
         if (array.length == 0)
@@ -161,7 +161,7 @@ public class Mathematics
         return min;
     }
 
-    @Contract(pure = true)
+
     public static float min(@NotNull float... array)
     {
         if (array.length == 0)
@@ -177,7 +177,7 @@ public class Mathematics
         return min;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMax(@NotNull int... array)
     {
         if (array.length == 0)
@@ -193,7 +193,7 @@ public class Mathematics
         return indexOfMax;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMax(@NotNull double... array)
     {
         if (array.length == 0)
@@ -209,7 +209,7 @@ public class Mathematics
         return indexOfMax;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMax(@NotNull long... array)
     {
         if (array.length == 0)
@@ -225,7 +225,7 @@ public class Mathematics
         return indexOfMax;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMax(@NotNull short... array)
     {
         if (array.length == 0)
@@ -241,7 +241,7 @@ public class Mathematics
         return indexOfMax;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMax(@NotNull float... array)
     {
         if (array.length == 0)
@@ -257,7 +257,7 @@ public class Mathematics
         return indexOfMax;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMin(@NotNull int... array)
     {
         if (array.length == 0)
@@ -273,7 +273,7 @@ public class Mathematics
         return indexOfMin;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMin(@NotNull double... array)
     {
         if (array.length == 0)
@@ -289,7 +289,7 @@ public class Mathematics
         return indexOfMin;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMin(@NotNull long... array)
     {
         if (array.length == 0)
@@ -305,7 +305,7 @@ public class Mathematics
         return indexOfMin;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMin(@NotNull short... array)
     {
         if (array.length == 0)
@@ -321,7 +321,7 @@ public class Mathematics
         return indexOfMin;
     }
 
-    @Contract(pure = true)
+
     public static int indexOfMin(@NotNull float... array)
     {
         if (array.length == 0)

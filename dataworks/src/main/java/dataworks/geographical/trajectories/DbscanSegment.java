@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 // Segments the trajectory to stop and move episodes using DBSCAN.
 public class DbscanSegment
 {
-    @Contract(pure = true)
+
     private DbscanSegment(){}
 
     @NotNull
-    @Contract("null, _, _ -> fail")
+
     public static Iterable<TrajectorySegment> segment(Trajectory trajectory, int minPoints, double minDistance)
     {
         if (trajectory == null)

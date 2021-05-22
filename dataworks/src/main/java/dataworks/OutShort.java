@@ -9,7 +9,6 @@ public class OutShort
 {
     private short value;
 
-    @Contract(pure = true)
     public OutShort(short value)
     {
         this.value = value;

@@ -21,13 +21,13 @@ public class Trajectory
     private int trajectoryId;
     private Object tag;
 
-    @Contract(pure = true)
+
     public Iterable<SamplePoint> getPoints()
     {
         return points;
     }
 
-    @Contract(pure = true)
+
     public int getTrajectoryId()
     {
         return trajectoryId;
@@ -69,7 +69,7 @@ public class Trajectory
      *                           [Y] represents the y-coordinate of the point with type double.<p>
      *                           [SamplingTime] represents the sampling time of the point with type {@link Timestamp}, this is an optional field.
      */
-    @Contract("null -> fail")
+
     public static Trajectory parse(String trajectoryJsonText)
     {
         if (trajectoryJsonText == null)
@@ -99,7 +99,7 @@ public class Trajectory
         return trajectory;
     }
 
-    @Contract("_, null -> fail")
+
     public Trajectory(int id, Iterable<SamplePoint> points)
     {
         if (points == null)

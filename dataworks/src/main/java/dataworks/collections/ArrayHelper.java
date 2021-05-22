@@ -7,7 +7,7 @@ public class ArrayHelper
 {
     public static final int MAX_ARRAY_LENGTH = Integer.MAX_VALUE;
 
-    @Contract(pure = true)
+
     private ArrayHelper()
     {
     }
@@ -18,7 +18,7 @@ public class ArrayHelper
         System.arraycopy(source, sourceStartIndex, destination, destinationStartIndex, count);
     }
 
-    @Contract("null, _, _, _ -> fail; !null, null, _, _ -> fail")
+
     public static <T> void copy(ICollection<T> source, T[] destination, int destinationStartIndex, int count)
     {
         if (source == null)

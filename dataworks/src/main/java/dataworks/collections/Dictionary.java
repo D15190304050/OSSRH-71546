@@ -41,7 +41,7 @@ public class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, Seri
         this(new DefaultComparator<>());
     }
 
-    @Contract(pure = true)
+
     public Dictionary(Comparator<TKey> comparator)
     {
         count = 0;
@@ -520,14 +520,14 @@ public class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue>, Seri
         return new DictionaryIterator(this);
     }
 
-    @Contract("null -> fail")
+
     private void validateKey(TKey key)
     {
         if (key == null)
             throw new NullPointerException("Argument \"key\" cannot be null.");
     }
 
-    @Contract("null, _ -> fail")
+
     private void validateArray(KeyValuePair<TKey, TValue>[] array, int remainingLength)
     {
         if (array == null)

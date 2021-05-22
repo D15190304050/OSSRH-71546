@@ -33,7 +33,7 @@ public abstract class QueueStackBase<T> implements ICollection<T>
     protected int version;
     protected DefaultComparator<T> comparator;
 
-    @Contract(pure = true)
+
     protected QueueStackBase()
     {
         first = null;

@@ -33,7 +33,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
      * Initializes a new instance of the {@link LinkedList} class that contains elements copied the specified
      * {@link Iterable} and has sufficient capacity to accommodate the number of elements copied.
      */
-    @Contract("null -> fail")
+
     public LinkedList(Iterable<T> collection)
     {
         if (collection == null)
@@ -47,7 +47,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
      * Initializes a new instance of the {@link LinkedList} class that contains elements copied the specified
      * array and has sufficient capacity to accommodate the number of elements copied.
      */
-    @Contract("null -> fail")
+
     public LinkedList(T[] collection)
     {
         if (collection == null)
@@ -422,7 +422,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
         internalRemoveNode(first.previous);
     }
 
-    @Contract("null -> fail")
+
     private void validateNode(LinkedListNode<T> node)
     {
         if (node == null)
@@ -431,7 +431,7 @@ public class LinkedList<T> implements ICollection<T>, Serializable
             throw new IllegalArgumentException("The LinkedListNode<T> does not belong to the LinkedList<T>.");
     }
 
-    @Contract("null -> fail")
+
     private void validateNewNode(LinkedListNode<T> node)
     {
         if (node == null)

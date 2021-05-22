@@ -26,7 +26,7 @@ public class RegionOfInterest
         name = null;
     }
 
-    @Contract(pure = true)
+
     public RegionOfInterest(IShape2D region, String name)
     {
         validateRegion(region);

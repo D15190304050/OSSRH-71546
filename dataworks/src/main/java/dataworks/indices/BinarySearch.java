@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Contract;
 
 public class BinarySearch
 {
-    @Contract(pure = true)
+
     private BinarySearch()
     {
     }
@@ -26,7 +26,7 @@ public class BinarySearch
      * negative result to produce the index of the first element (if any) that
      * is larger than the given search value.
      */
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     public static <TKey extends Comparable<TKey>> int search(TKey[] keys, TKey target)
     {
         if (keys == null)
@@ -70,7 +70,7 @@ public class BinarySearch
      * negative result to produce the index of the first element (if any) that
      * is larger than the given search value.
      */
-    @Contract(value = "null, _ -> fail", pure = true)
+
     public static int search(int[] values, int target)
     {
         if (values == null)
@@ -111,7 +111,7 @@ public class BinarySearch
      * negative result to produce the index of the first element (if any) that
      * is larger than the given search value.
      */
-    @Contract(value = "null, _ -> fail", pure = true)
+
     public static int search(double[] values, double target)
     {
         if (values == null)
@@ -152,7 +152,7 @@ public class BinarySearch
      * negative result to produce the index of the first element (if any) that
      * is larger than the given search value.
      */
-    @Contract(value = "null, _ -> fail", pure = true)
+
     public static int search(long[] values, long target)
     {
         if (values == null)
@@ -193,7 +193,7 @@ public class BinarySearch
      * negative result to produce the index of the first element (if any) that
      * is larger than the given search value.
      */
-    @Contract(value = "null, _ -> fail", pure = true)
+
     public static int search(short[] values, short target)
     {
         if (values == null)
@@ -234,7 +234,7 @@ public class BinarySearch
      * negative result to produce the index of the first element (if any) that
      * is larger than the given search value.
      */
-    @Contract(value = "null, _ -> fail", pure = true)
+
     public static int search(float[] values, float target)
     {
         if (values == null)
@@ -275,7 +275,7 @@ public class BinarySearch
      * negative result to produce the index of the first element (if any) that
      * is larger than the given search value.
      */
-    @Contract(value = "null, _ -> fail", pure = true)
+
     public static int search(char[] values, char target)
     {
         if (values == null)
@@ -316,7 +316,7 @@ public class BinarySearch
      * negative result to produce the index of the first element (if any) that
      * is larger than the given search value.
      */
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     public static <TKey extends Comparable<TKey>, TValue> int searchForValue(KeyValuePair<TKey, TValue>[] keyValuePairs, TKey target)
     {
         if (keyValuePairs == null)

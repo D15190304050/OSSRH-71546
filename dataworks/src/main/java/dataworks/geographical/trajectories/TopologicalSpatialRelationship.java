@@ -7,7 +7,7 @@ public class TopologicalSpatialRelationship
     private TopologicalPredicate predicate;
     private RegionOfInterest roi;
 
-    @Contract("null, _ -> fail; !null, null -> fail")
+
     public TopologicalSpatialRelationship(TopologicalPredicate predicate, RegionOfInterest roi)
     {
         validatePredicate(predicate);
@@ -17,14 +17,14 @@ public class TopologicalSpatialRelationship
         this.roi = roi;
     }
 
-    @Contract("null -> fail")
+
     private void validatePredicate(TopologicalPredicate predicate)
     {
         if (predicate == null)
             throw new NullPointerException("Argument \"predicate\" is null.");
     }
 
-    @Contract("null -> fail")
+
     private void validateRoi(RegionOfInterest roi)
     {
         if (roi == null)
@@ -36,7 +36,7 @@ public class TopologicalSpatialRelationship
         return predicate;
     }
 
-    @Contract("null -> fail")
+
     public void setPredicate(TopologicalPredicate predicate)
     {
         validatePredicate(predicate);
@@ -48,7 +48,7 @@ public class TopologicalSpatialRelationship
         return roi;
     }
 
-    @Contract("null -> fail")
+
     public void setRoi(RegionOfInterest roi)
     {
         validateRoi(roi);

@@ -9,7 +9,6 @@ public class OutInt
 {
     private int value;
 
-    @Contract(pure = true)
     public OutInt(int value)
     {
         this.value = value;

@@ -726,7 +726,7 @@ public class HashTable implements ICollection<KeyValuePair<Object, Object>>, Ser
             return PRIMES[0];
         }
 
-        @Contract(pure = true)
+
         public static boolean isPrime(int candidate)
         {
             if ((candidate & 1) != 0)
